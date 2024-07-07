@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./form.css">
+</head>
+<body>
+    <main>
+        <section class = formsAll>
+            <div class="form">
+                <h2>Форма  регистрации</h2>
+                <form action="#" name="formReg" class="formReg">
+                    <label for="yourName" class="form__label">Имя:</label>
+                    <input type="text" id="yourName" name="yourName" class="form__input" placeholder="Введите имя" required>
+                    <span id="errorName" style="color: rgb(107, 17, 17);"></span>
+
+                    <label for="yourEmail" class="form__label">Почта:</label>
+                    <input type="email" id="yourEmail" name="yourEmail" class="form__input" placeholder="Введите почту" required>
+                    <span id="errorEmail" style="color: rgb(107, 17, 17);"></span>
+
+                    <label for="yourAge" class="form__label">Возраст:</label>
+                    <input type="text" id="yourAge" name="yourAge" class="form__input" placeholder="Введите возраст" required>
+
+                    <label for="yourMale" class="form__label">Пол:</label>
+                    <div><input type="radio" id="maleGender" name="yourMale" class="form__input">Муж
+                    <input type="radio" id="feminineGender" name="yourMale" class="form__input">Жен</div>
+
+                    <label for="yourSelect" class="form__label">Выберите профессию</label>
+                    <select name="yourSelect" id="yourSelect" class="form__input" required>
+                    <option value="" disabled selected hidden>-Выберите профессию-</option>
+                    <option value="Врач">Врач</option>
+                    <option value="Учитель">Учитель</option>
+                    <option value="Программист">Программист</option>
+                    <option value="Дизайнер">Дизайнер</option>
+                    <option value="Инженер">Инженер</option>
+                    <option value="Продавец">Продавец</option>
+                    <option value="Другое">Другое</option>
+                    </select>
+                    
+                    <label for="yourPassword" class="form__label">Пароль:</label><span class="color">(не менее 8 символов)</span>
+                    <input type="password" id="yourPassword" name="yourPassword" class="form__input" placeholder="Введите пароль" required minlength="8" pattern="^(?=.*[A-Z])(?=.*[a-z])(?=.*\d).{8,}$">
+
+                    <label for="yourReg" class="form__label">Зарегистрируемся?</label>
+                    <div><input type="checkbox" id="yourReg" name="yourReg" class="form__input" onchange="document.getElementById('submit').disabled = !this.checked" value="Я хочу зарегистрироваться" required>
+                    <span>Я хочу зарегистрироваться</span>
+                    </div>
+                    <span id="errorCheck" style="color: rgb(107, 17, 17);"></span>
+                    <input type="submit" id="submit" name="yourBtn" disabled class="form__submit" value="ОТПРАВИТЬ">
+
+                </form>
+
+            </div>
+
+        </section>
+    </main>
+    <script src="./form.js"></script>
+</body>
+</html>
