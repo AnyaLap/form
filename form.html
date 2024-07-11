@@ -39,8 +39,9 @@
                     <option value="Другое">Другое</option>
                     </select>
                     
-                    <label for="yourPassword" class="form__label">Пароль:</label><span class="color">(не менее 8 символов)</span>
+                    <label for="yourPassword" class="form__label">Пароль:</label></span>
                     <input type="password" id="yourPassword" name="yourPassword" class="form__input" placeholder="Введите пароль" required minlength="8" pattern="^(?=.*[A-Z])(?=.*[a-z])(?=.*\d).{8,}$">
+                    <span id="errorPassword" style="color: rgb(107, 17, 17);"></span>
 
                     <label for="yourReg" class="form__label">Зарегистрируемся?</label>
                     <div><input type="checkbox" id="yourReg" name="yourReg" class="form__input" onchange="document.getElementById('submit').disabled = !this.checked" value="Я хочу зарегистрироваться" required>

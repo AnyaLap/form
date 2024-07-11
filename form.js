@@ -7,13 +7,21 @@ const submitBtn = form.elements.yourBtn;
 const errorName = document.getElementById('errorName');
 const errorEmail = document.getElementById('errorEmail');
 const errorCheck = document.getElementById('errorCheck');
+const errorPassword = document.getElementById('errorPassword');
+
+//Добавлена обработка события изменения для чек 
+
+yourCheck.addEventListener('change',function(){
+  //Кнопка отправки активируется только если чекбокс отмечен
+  submitBtn.disabled = !this.checked;
+});
 
   form.addEventListener('submit', function(event) {
     event.preventDefault();
     
     let isValid = true;
     const nameValue = nameInput.value;
-    const nameRegex = /^[a-zA-Zа-яА-Я" "]{2,20}$/;
+    const nameRegex = /^[a-zA-Zа-яА-Я\s]{2,20}$/;
   
     if (nameRegex.test(nameValue)) {
       // Если имя соответствует формату, убираем сообщение об ошибке
@@ -36,17 +44,25 @@ const errorCheck = document.getElementById('errorCheck');
       isValid = false;
     }
 
-    if (yourCheck.checked) {
-      errorCheck.textContent = '';
+    //Добавлена проверка пароля
+    const passwordValue = form.elements.yourPassword.value;
+    const passwordRegex = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d).{8,}$/;
+    if (passwordRegex.test(passwordValue)) {
+      // Если пароль соответствует формату, убираем сообщение об ошибке
+      errorPassword.textContent = '';
     } else {
-      errorCheck.textContent = 'Согласие не подтверждено';
+      // Если пароль не соответствует формату, показываем сообщение об ошибке
+      errorPassword.textContent = 'Пароль должен содержать не менее 8 символов, включая заглавные и строчные буквы и цифры';
       isValid = false;
     }
+
     if (isValid) {
         console.log(`Name: ${nameValue}`);
         console.log(`Email: ${emailValue}`);
             
         form.reset();
+      //Кнопка отправки отключается после успешного отправления формы 
+      submitBtn.disabled = true;
     }
   });
 
