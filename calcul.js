@@ -13,7 +13,7 @@ function updateModels() {
 
     carModelSelect.innerHTML = ""; // Очищаем текущие модели
 
-    carModels[selectedMake].forEach(model => {
+    carModels[selectedMake].forEach((model) => {
         const option = document.createElement('option');
         option.value = model;
         option.text = model;
@@ -28,22 +28,23 @@ const carBrand = document.getElementById("carBrand");
 const carModel = document.getElementById("carModel");
 const carFuel = document.querySelectorAll("input[name='carFuel']");
 const carCondition = document.querySelectorAll("input[name='carCondition']");
-console.log(carCondition);
 const carOwner = document.querySelectorAll("input[name='carOwner']");
 const carPay = document.querySelectorAll("input[name='carPay']");
 const volume = document.getElementById("volume");
 const priceCar = document.getElementById("price");
 const submit = document.getElementById("submit");
 
-const calculatePrice = () => {
+const calculatePrice = (event) => {
+
+  event.preventDefault(); //Предотвращаем отправку формы
 
 const selectedBrand = carBrand.value;
 const selectedModel = carModel.value;
-const selectedFuel = [...carFuel].find(item => item.checked).id;
+const selectedFuel = [...carFuel].find(item => item.checked)?.value||'petrolFuel';
 const selectedVolume = volume.value;
-const selectedCondition = [...carCondition].find(item => item.checked).id;
-const selectedOwner = [...carOwner].find(item => item.checked).id;
-const selectedPay = [...carPay].find(item => item.checked).id;
+const selectedCondition = [...carCondition].find(item => item.checked)?.value||'newCar';
+const selectedOwner = [...carOwner].find(item => item.checked)?.value||'firstOwner';
+const selectedPay = [...carPay].find(item => item.checked)?.value||'payCash';
  
   let basePrice = 200000;
   let totalPrice = basePrice;
@@ -92,49 +93,27 @@ const selectedPay = [...carPay].find(item => item.checked).id;
   }
   
   priceCar.textContent = totalPrice;
-  
 };
 submit.addEventListener('click', calculatePrice);
 
-const elements = [carBrand, carModel, carFuel, volume, carCondition, carOwner, carPay];
+//Обновляем цену при изменении любого элемента формы
+const elements = [carBrand, carModel, ...carFuel, volume, ...carCondition, ...carOwner, ...carPay];
 
 elements.forEach(element => {
   element.addEventListener('change', calculatePrice);
 });
 
-
-
-
-
-
-
-
-
-
-
-// const radioButtons = document.querySelectorAll('input[type="radio"]');
-
-// radioButtons.forEach(radioButton => {
-//   radioButton.addEventListener('change', function() {
-//     if (this.checked) {
-//       this.classList.add('color');
-//     } else {
-//       this.classList.remove('color');
-//     }
-//   });
-// });
-
 //   //Обработчики событий focus и blur
-//   const inputFields = document.querySelectorAll('.form__select');
+  const inputFields = document.querySelectorAll('.form__select, .form__input');
 
-//   inputFields.forEach(function(option) {
-//     option.addEventListener('focus', function () {
-//     option.style.border = '2px solid rgb(141, 245, 120)'; //Изменение границы при фокусе
-//     option.style.backgroundColor = 'rgb(141, 245, 120)';//Изменение фона при фокусе
-//     });
+  inputFields.forEach(function(input) {
+    input.addEventListener('focus', function () {
+    input.style.border = '2px solid rgb(141, 245, 120)'; //Изменение границы при фокусе
+    input.style.backgroundColor = 'rgb(141, 245, 120)';//Изменение фона при фокусе
+    });
   
-//     option.addEventListener('blur', function () {
-//     option.style.border = ''; //Восстановление стандартной границы после потери фокуса
-//     option.style.backgroundColor = ''; //Восстановление стандартного фона после потери фокуса
-//     });
-//   });
+    input.addEventListener('blur', function () {
+    input.style.border = ''; //Восстановление стандартной границы после потери фокуса
+    input.style.backgroundColor = ''; //Восстановление стандартного фона после потери фокуса
+    });
+  });
