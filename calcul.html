@@ -11,12 +11,12 @@
     <section class = formsAll>
         <div class="form">
             <h2>Калькулятор стоимости авто</h2>
-            <form action="#" name="formReg" class="formReg">
+            <form action="#" name="formReg" class="formReg" id="carForm">
 
                 <div>
                     <label for="carBrand" class="form__label">Марка:</label>
                     <select name="carBrand" id="carBrand" class="form__select" onchange="updateModels()" required>
-                    <option value="" disabled selected hidden></option>
+                    <option value="" disabled selected hidden>Выберите марку</option>
                     <option value="Renault">Renault</option>
                     <option value="Opel">Opel</option>
                     <option value="Mazda">Mazda</option>
@@ -26,7 +26,8 @@
 
                 <div>
                     <label for="carModel" class="form__label">Модель:</label>
-                    <select name="carModel" id="carModel" class="form__select" required>
+                    <select name="carModel" id="carModel" class="form__select">
+                        <option value="" disabled selected>Выберите модель</option>
                     </select>
                 </div>
 

@@ -4,15 +4,15 @@ body{
 .formsAll{
     margin: 10px;
 }
-.form{
-    width: 60%;
-    margin: 0 auto;
+.formsAll{
+    width: 50%;
+    margin: 10px auto;
     padding: 30px;
     border-radius: 20px;
     background-color: rgb(191, 250, 250);
 }
 
-.formReg{
+.form{
     display: flex;
     flex-direction: column;
     width: 80%;
